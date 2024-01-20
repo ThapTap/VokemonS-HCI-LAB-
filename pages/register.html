@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokemon | Register</title>
+    <link rel="stylesheet" href="/styles/register.css">
+</head>
+<script src="/script/register.js" defer></script>
+
+<body>
+    <div class="box-container">
+        <div class="box-left-child">
+            <a href="/pages/home.html">
+                <img src="/images/logodepan.png"
+                width="400px"
+                alt="">
+            </a>
+        </div>
+        <div class="box-right-child">
+
+            <form id="registrationForm" class="form-container">
+                <h1>REGISTER</h1>
+
+                <div class="form-creds-container">
+                    <input type="text" id="name" name="name" placeholder="Name" required>
+                    <input type="text" id="email" name="email" placeholder="Email" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+                </div>
+        
+        
+        
+                <div class="form-gender">
+                    Male
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <!-- <label for="male">Male</label> -->
+                </div>
+                <div class="form-gender">
+                    Female
+                    <input type="radio" id="female" name="gender" value="female" required>
+                    <!-- <label for="female">Female</label> -->
+                </div>
+                <br>
+        
+                <div class="form-terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">By checking this box, you agree on our terms and condition.</label>
+                </div>
+        
+                <button type="button" class="button-register" onclick="validateForm()">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
