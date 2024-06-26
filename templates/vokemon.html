@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VokemonS | Vokemon Page</title>
 
-    <link rel="stylesheet" href="/styles/vokemon.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/vokemon.css') }}">
+    <script src='{{ url_for("static", filename="script/main.js") }}'></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='snorlax.ico') }}" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -22,20 +24,32 @@
 
 <body>
     <header class="nav-container">
-        <a href="home.html" class="logo">VokemonS</a>
+        <a href="{{ url_for('home') }}" class="logo">VokemonS</a>
     <nav class="navbar">
-        <a href="home.html">HOME</a>
-        <a href="news.html">NEWS</a>
-        <a href="vokemon.html" class="underline">VOKEMON</a>
-        <a href="tournament.html">TOURNAMENT</a>
+        <a href="{{ url_for('home') }}">HOME</a>
+        <a href="{{ url_for('news') }}">NEWS</a>
+        <a href="{{ url_for('vokemon') }}" class="underline">VOKEMON</a>
+        <a href="{{ url_for('tournament') }}">TOURNAMENT</a>
     </nav>
     
+    {% if logged_in %}
+    <div class="dropdown">
+        <a href="#" class="profile">
+            <img src="{{ url_for('static', filename=logged_in.profile_pic_default) }}" alt="Profile Image">
+        </a>
+        <div class="dropdown-content" id="dropdownContent">
+            <a href="#">{{ logged_in.username }}</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>  <!-- Tombol logout -->
+        </div>
+    </div>
+    {% else %}
     <div class="navbar-resp">
-        <a href="register.html" class="register">REGISTER</a>
+        <a href="{{ url_for('login') }}" class="register">REGISTER/LOGIN</a>
         <label for="" class="icon-menu">
-                <i class='bx bx-menu' menu-dropdown></i>
+            <i class='bx bx-menu' menu-dropdown></i>
         </label>
     </div>
+    {% endif %}
 
 </header>
 
@@ -62,7 +76,7 @@
 
     <!-- PIKACHU -->
     <div class="vokemon-box">
-        <img src="/images/pikachu.png" 
+        <img src="/static/images/pikachu.png" 
         class="vokemon-img"
         width="350px"
         alt="">
@@ -76,7 +90,7 @@
                 <div class="vokemon-minibox-stats-header">
                     TYPE
                 </div>
-                <img src="/images/electric.png" 
+                <img src="/static/images/electric.png" 
                 height="40px"
                 alt="">
             </div>
@@ -92,7 +106,7 @@
 
     <!-- CHARIZARD -->
     <div class="vokemon-box">
-        <img src="/images/charizard.png" 
+        <img src="/static/images/charizard.png" 
         class="vokemon-img"
         width="350px"
         alt="">
@@ -107,10 +121,10 @@
                 <div class="vokemon-minibox-stats-header">
                     TYPE
                 </div>
-                <img src="/images/fire.png"
+                <img src="/static/images/fire.png"
                 height="40px"
                 alt="">
-                <img src="/images/flying.png" 
+                <img src="/static/images/flying.png" 
                 height="40px"
                 alt="">
             </div>
@@ -126,7 +140,7 @@
 
     <!-- GENGAR -->
     <div class="vokemon-box">
-        <img src="/images/gengar.png" 
+        <img src="/static/images/gengar.png" 
         class="vokemon-img"
         width="350px"
         alt="">
@@ -141,10 +155,10 @@
                 <div class="vokemon-minibox-stats-header">
                     TYPE
                 </div>
-                <img src="/images/ghost.png" 
+                <img src="/static/images/ghost.png" 
                 height="40px"
                 alt="">
-                <img src="/images/poison.png"
+                <img src="/static/images/poison.png"
                 height="40px"
                 alt="">
             </div>
@@ -163,7 +177,7 @@
     
     <!-- EEVEE -->
     <div class="vokemon-box">
-        <img src="/images/eevee.png" 
+        <img src="/static/images/eevee.png" 
         class="vokemon-img"
         width="350px"
         alt="">
@@ -178,7 +192,7 @@
                 <div class="vokemon-minibox-stats-header">
                     TYPE
                 </div>
-                <img src="/images/normal.png" 
+                <img src="/static/images/normal.png" 
                 height="40px"
                 alt="">
             </div>
@@ -194,7 +208,7 @@
 
     <!-- SNORLAX -->
     <div class="vokemon-box">
-        <img src="/images/snorlax.png" 
+        <img src="/static/images/snorlax.png" 
         class="vokemon-img"
         width="350px"
         alt="">
@@ -209,7 +223,7 @@
                 <div class="vokemon-minibox-stats-header">
                     TYPE
                 </div>
-                <img src="/images/normal.png" 
+                <img src="/static/images/normal.png" 
                 height="40px"
                 alt="">
             </div>
@@ -225,7 +239,7 @@
 
     <!-- SCIZOR -->
     <div class="vokemon-box">
-        <img src="/images/scizor.png" 
+        <img src="/static/images/scizor.png" 
         class="vokemon-img"
         width="350px"
         alt="">
@@ -240,10 +254,10 @@
                 <div class="vokemon-minibox-stats-header">
                     TYPE
                 </div>
-                <img src="/images/bug.png" 
+                <img src="/static/images/bug.png" 
                 height="40px"
                 alt="">
-                <img src="/images/steel.png"
+                <img src="/static/images/steel.png"
                 height="40px"
                 alt="">
             </div>
@@ -262,7 +276,7 @@
 
     <!-- BULBASAUR -->
     <div class="vokemon-box">
-        <img src="/images/bulbasaur.png" 
+        <img src="/static/images/bulbasaur.png" 
         class="vokemon-img"
         width="350px"
         alt="">
@@ -276,11 +290,11 @@
                 <div class="vokemon-minibox-stats-header">
                     TYPE
                 </div>
-                <img src="/images/poison.png" 
+                <img src="/static/images/poison.png" 
                 height="40px"
                 alt="">
 
-                <img src="/images/grass.png" 
+                <img src="/static/images/grass.png" 
                 height="40px"
                 alt="">
             </div>
@@ -296,7 +310,7 @@
 
     <!-- CHARMANDER -->
     <div class="vokemon-box">
-        <img src="/images/charmander.png" 
+        <img src="/static/images/charmander.png" 
         class="vokemon-img"
         width="350px"
         alt="">
@@ -310,7 +324,7 @@
                 <div class="vokemon-minibox-stats-header">
                     TYPE
                 </div>
-                <img src="/images/fire.png" 
+                <img src="/static/images/fire.png" 
                 height="40px"
                 alt="">
             </div>
@@ -326,7 +340,7 @@
 
     <!-- GYARADOS -->
     <div class="vokemon-box">
-        <img src="/images/gyarados.png" 
+        <img src="/static/images/gyarados.png" 
         class="vokemon-img"
         width="350px"
         alt="">
@@ -340,11 +354,11 @@
                 <div class="vokemon-minibox-stats-header">
                     TYPE
                 </div>
-                <img src="/images/flying.png" 
+                <img src="/static/images/flying.png" 
                 height="40px"
                 alt="">
 
-                <img src="/images/water.png" 
+                <img src="/static/images/water.png" 
                 height="40px"
                 alt="">
             </div>
@@ -391,7 +405,6 @@
     
         </footer>
         
-        <link rel="stylesheet" href="/style.css">
 </body>
 
 
